@@ -15,9 +15,22 @@
       integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
       crossorigin="anonymous"
     />
+
+    <style>
+      #spinner {
+        background: #000;
+        width: 100vw;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1;
+      }
+    </style>
   </head>
 
   <body>
+    <div id="spinner"></div>
     <div class="container">
       <nav class="navbar navbar-expand-sm navbar-dark bg-primary">
         <a class="navbar-brand" href="#">Navbar</a>
@@ -151,16 +164,20 @@
                 <input id="HinhSP" class="form-control" placeholder="Nhập vào hình sản phẩm" />
               </div>
               <div class="form-group">
-                <label for="">Loại sản phẩm: </label>
-                <select class="form-control" id="loaiSP">
+                <label for="">Mô tả sản phẩm: </label>
+                <!-- <select class="form-control" id="loaiSP">
                   <option value="phone">Phone</option>
                   <option value="laptop">Laptop</option>
                   <option value="other">Other</option>
-                </select>
+                </select> -->
+                <input id="MoTaSP" class="form-control" placeholder="Nhập vào mô tả sản phẩm" />
               </div>
             </div>
             <!-- Modal footer -->
-            <div class="modal-footer"></div>
+            <div class="modal-footer">
+              <button onclick="createProduct()" class="btn btn-success">Add</button>
+              <button onclick="updateProduct()" class="btn btn-warning">Update</button>
+            </div>
           </div>
         </div>
       </div>
