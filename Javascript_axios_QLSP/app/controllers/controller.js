@@ -13,6 +13,13 @@ function turnOnLoading() {
 function turnOffLoading() {
   document.getElementById("spinner").style.display = "none";
 }
+function resetForm() {
+  var listInput = document.querySelectorAll("input");
+  for (var i = 0; i < listInput.length; i++) {
+    listInput[i].value = "";
+  }
+}
+
 var idEdited = null;
 
 function renderProducts(productArray) {
@@ -64,6 +71,7 @@ fetchProductList();
 
 //   xoá 1 sp từ server
 function deleteProduct(id) {
+  turnOnLoading();
   //   gọi api xoá sp
   axios({ url: `https://6597f7bd668d248edf23d034.mockapi.io/product/${id}`, method: "DELETE" })
     .then(function (res) {
@@ -72,6 +80,7 @@ function deleteProduct(id) {
       console.log("😀 - res", res.data);
     })
     .catch(function (err) {
+      turnOffLoading();
       // xoá thất bại
       console.log("😀 - err", err);
     });
@@ -105,6 +114,7 @@ function createProduct() {
       fetchProductList();
       // tắt modal sau khi thêm thành công
       $("#myModal").modal("hide");
+      resetForm();
     })
     .catch(function (err) {
       console.log("😀 - createProduct - err", err);
@@ -159,3 +169,5 @@ function updateProduct() {
     })
     .catch(function (err) {});
 }
+
+// axios()tcf
